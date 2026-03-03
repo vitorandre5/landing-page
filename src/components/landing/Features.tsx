@@ -1,21 +1,21 @@
-import { GitBranch, Wallet, Users, History } from "lucide-react";
+import { Bot, Wallet, Users, History } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const features = [
   {
-    icon: GitBranch,
-    title: "Arbitragem e Subbets",
-    description: "Registre operações de arbitragem e subbets com controle total de entradas, odds e resultados.",
+    icon: Bot,
+    title: "AI Auto",
+    description: "IA que identifica os prints das apostas e planilha tudo automaticamente, com precisão e velocidade.",
   },
   {
     icon: Wallet,
-    title: "Gestão de Bankroll",
-    description: "Acompanhe seu bankroll em tempo real com alertas, metas e histórico de evolução.",
+    title: "Gestão de Banca",
+    description: "Acompanhe sua banca em tempo real com alertas, metas e histórico de evolução.",
   },
   {
     icon: Users,
-    title: "Parceiros e Metas",
-    description: "Gerencie apostas de parceiros, divida lucros automaticamente e defina metas por período.",
+    title: "Tipsters e Metas",
+    description: "Gerencie apostas de tipsters, divida lucros automaticamente e defina metas por período.",
   },
   {
     icon: History,
@@ -33,7 +33,7 @@ const Features = () => (
             Tudo que você precisa em um só lugar
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Ferramentas profissionais para quem quer levar apostas a sério.
+            Uma IA que identifica os prints das apostas e transforma em planilha automática para você focar no lucro.
           </p>
         </div>
       </ScrollReveal>

@@ -10,7 +10,7 @@ const profiles = [
   },
   {
     icon: Gift,
-    title: "Caçadores de Bônus",
+    title: "Gestão de Freebets",
     description:
       "Gerencie rollover, free bets e promoções com visão clara do saldo real e do lucro extraído.",
   },

@@ -2,10 +2,10 @@ import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell } from "rechar
 import ScrollReveal from "./ScrollReveal";
 
 const partnersData = [
-  { name: "Parceiro A", lucro: 1820 },
-  { name: "Parceiro B", lucro: 1340 },
-  { name: "Parceiro C", lucro: 960 },
-  { name: "Parceiro D", lucro: 700 },
+  { name: "Tipster A", lucro: 1820 },
+  { name: "Tipster B", lucro: 1340 },
+  { name: "Tipster C", lucro: 960 },
+  { name: "Tipster D", lucro: 700 },
 ];
 
 const books = [
@@ -46,7 +46,7 @@ const Analytics = () => (
         <ScrollReveal delay={0}>
           <div className="rounded-2xl border border-border bg-card p-6 hover:border-primary/20 transition-all duration-300 h-full">
             <h3 className="text-sm font-semibold text-muted-foreground mb-5 uppercase tracking-wide">
-              Lucro por Parceiro
+              Lucro por Tipster
             </h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={partnersData} layout="vertical" barCategoryGap="25%">

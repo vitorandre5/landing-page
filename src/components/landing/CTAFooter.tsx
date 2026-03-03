@@ -25,11 +25,14 @@ const CTAFooter = () => (
             Junte-se a centenas de apostadores que já organizam e lucram mais com o Bet Tagger.
           </p>
           <Button
+            asChild
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-10 py-6 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.03]"
           >
-            Criar conta grátis agora
-            <ArrowRight className="ml-2" size={20} />
+            <a href="https://app.bet-tagger.com/register">
+              Criar conta grátis agora
+              <ArrowRight className="ml-2" size={20} />
+            </a>
           </Button>
         </ScrollReveal>
       </div>

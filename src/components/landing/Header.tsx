@@ -49,8 +49,8 @@ const Header = () => {
         </nav>
 
         <div className="hidden md:block">
-          <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-surface-hover">
-            Entrar
+          <Button asChild variant="outline" size="sm" className="border-border text-foreground hover:bg-surface-hover">
+            <a href="https://app.bet-tagger.com/">Entrar</a>
           </Button>
         </div>
 
@@ -75,8 +75,8 @@ const Header = () => {
               {l.label}
             </a>
           ))}
-          <Button variant="outline" size="sm" className="mt-2 w-full border-border">
-            Entrar
+          <Button asChild variant="outline" size="sm" className="mt-2 w-full border-border">
+            <a href="https://app.bet-tagger.com/">Entrar</a>
           </Button>
         </div>
       )}
