@@ -11,6 +11,7 @@ const plans = [
     annualPrice: null,
     badge: null,
     cta: "Começar grátis",
+    ctaHref: "https://app.bet-tagger.com/",
     highlighted: false,
     features: [
       "Todas as funcionalidades liberadas",
@@ -24,8 +25,10 @@ const plans = [
     description: "Plano Premium",
     monthlyPrice: "R$ 19,90",
     annualPrice: "R$ 179 / ano",
+    annualSavings: "Economize 25%",
     badge: "Mais vendido",
     cta: "Assinar Pro",
+    ctaHref: "https://app.bet-tagger.com/",
     highlighted: true,
     features: [
       "Tudo ilimitado no app",
@@ -38,8 +41,10 @@ const plans = [
     description: "High Roller",
     monthlyPrice: "R$ 39,90",
     annualPrice: "R$ 299 / ano",
-    badge: "Âncora de preço",
+    annualSavings: "Economize 37%",
+    badge: null,
     cta: "Assinar Unlimited",
+    ctaHref: "https://app.bet-tagger.com/",
     highlighted: false,
     features: [
       "Tudo ilimitado",
@@ -50,101 +55,101 @@ const plans = [
 ];
 
 const Pricing = () => (
-  <section id="precos" className="py-20 lg:py-28 relative overflow-hidden">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+  <section id="precos" className="py-24 lg:py-32 relative overflow-hidden">
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
 
     <div className="container mx-auto px-4 lg:px-8 relative z-10">
       <ScrollReveal>
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <span className="section-badge">Planos</span>
+          <h2 className="heading-section text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
             Planos pensados para quem aposta todo dia
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
+          <p className="text-muted-foreground/80 max-w-lg mx-auto text-base md:text-lg leading-relaxed">
             Escale do gratuito ao unlimited com margem sustentável e foco em performance.
           </p>
         </div>
       </ScrollReveal>
 
-      <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
         {plans.map((plan, index) => (
-          <ScrollReveal key={plan.name} delay={index * 120}>
+          <ScrollReveal key={plan.name} delay={index * 100}>
             <div
-              className={`relative rounded-2xl bg-card p-8 transition-all duration-500 h-full ${
+              className={`relative rounded-2xl flex flex-col h-full transition-all duration-300 ${
                 plan.highlighted
-                  ? "border-2 border-primary hover:shadow-xl hover:shadow-primary/10"
-                  : "border border-border hover:border-primary/20 hover:shadow-lg"
-              }`}
+                  ? "bg-gradient-to-b from-primary/[0.07] to-transparent border border-primary/30 ring-1 ring-primary/20 shadow-glow-md hover:shadow-glow-lg"
+                  : "glass-card border-white/[0.08] hover:border-primary/20 hover:shadow-glow-sm"
+              } p-8`}
             >
-              {plan.badge ? (
-                <Badge className="absolute -top-3 left-6 bg-primary text-primary-foreground border-0 shadow-lg shadow-primary/30">
+              {plan.badge && (
+                <Badge className="absolute -top-3 left-6 bg-primary text-primary-foreground border-0 shadow-glow-sm text-xs font-semibold px-3 py-1">
                   {plan.badge}
                 </Badge>
-              ) : null}
-
-              <h3 className="text-lg font-semibold mb-1">{plan.name}</h3>
-              <p className="text-muted-foreground text-sm mb-5">{plan.description}</p>
-
-              <div className="mb-1">
-                <span className="text-5xl font-bold">{plan.monthlyPrice}</span>
-                <span className="text-muted-foreground text-sm"> / mês</span>
-              </div>
-
-              {plan.annualPrice ? (
-                <p className="text-sm text-muted-foreground mb-6">ou {plan.annualPrice}</p>
-              ) : (
-                <div className="mb-6 h-5" />
               )}
 
-              <ul className="space-y-3 mb-8">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-1 text-foreground">{plan.name}</h3>
+                <p className="text-muted-foreground/70 text-sm">{plan.description}</p>
+              </div>
+
+              <div className="mb-6 pb-6 border-b border-white/[0.07]">
+                <div className="flex items-baseline gap-1 mb-1.5">
+                  <span className="text-4xl font-bold tracking-tight text-foreground">{plan.monthlyPrice}</span>
+                  <span className="text-muted-foreground/60 text-sm"> / mês</span>
+                </div>
+                {plan.annualPrice ? (
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-sm text-muted-foreground/60">ou {plan.annualPrice}</span>
+                    {plan.annualSavings && (
+                      <span className="text-xs font-semibold text-primary bg-primary/10 border border-primary/15 px-2 py-0.5 rounded-full">
+                        {plan.annualSavings}
+                      </span>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground/50">para sempre</p>
+                )}
+              </div>
+
+              <ul className="space-y-3 mb-8 flex-1">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm">
+                  <li key={feature} className="flex items-start gap-3 text-sm">
                     <div
-                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                        plan.highlighted ? "bg-primary/10" : "bg-muted"
+                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
+                        plan.highlighted ? "bg-primary/15 border border-primary/25" : "bg-white/[0.06] border border-white/[0.10]"
                       }`}
                     >
                       <Check
-                        size={12}
+                        size={11}
                         className={plan.highlighted ? "text-primary" : "text-muted-foreground"}
                       />
                     </div>
-                    {feature}
+                    <span className="text-foreground/85">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              {plan.cta === "Começar grátis" ? (
+              <div className="mt-auto">
                 <Button
                   asChild
                   variant={plan.highlighted ? "default" : "outline"}
-                  className={`w-full font-semibold transition-all duration-300 ${
+                  className={`w-full font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                     plan.highlighted
-                      ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02]"
-                      : "border-border text-foreground hover:bg-surface-hover hover:border-primary/30"
+                      ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow-md hover:scale-[1.02]"
+                      : "border-white/[0.12] text-foreground/90 hover:bg-white/[0.06] hover:border-primary/30"
                   }`}
                 >
-                  <a href="https://app.bet-tagger.com/">{plan.cta}</a>
+                  <a href={plan.ctaHref}>{plan.cta}</a>
                 </Button>
-              ) : (
-                <Button
-                  variant={plan.highlighted ? "default" : "outline"}
-                  className={`w-full font-semibold transition-all duration-300 ${
-                    plan.highlighted
-                      ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02]"
-                      : "border-border text-foreground hover:bg-surface-hover hover:border-primary/30"
-                  }`}
-                >
-                  {plan.cta}
-                </Button>
-              )}
+              </div>
             </div>
           </ScrollReveal>
         ))}
       </div>
 
       <ScrollReveal delay={300}>
-        <p className="text-center text-sm text-muted-foreground mt-8">
-          FREE: 10 apostas no AI Auto • PRO: 300 apostas no AI Auto • UNLIMITED: tudo ilimitado
+        <p className="text-center text-xs text-muted-foreground/50 mt-10">
+          FREE: 10 apostas no AI Auto &nbsp;·&nbsp; PRO: 300 apostas no AI Auto &nbsp;·&nbsp; UNLIMITED: tudo ilimitado
         </p>
       </ScrollReveal>
     </div>
@@ -152,3 +157,4 @@ const Pricing = () => (
 );
 
 export default Pricing;
+

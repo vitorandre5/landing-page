@@ -1,3 +1,10 @@
+@import '@fontsource/inter/300.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,22 +14,23 @@
     --background: 0 0% 3.1%;
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 10.2%;
+    --card: 0 0% 9%;
     --card-foreground: 0 0% 98%;
 
     --popover: 0 0% 7.1%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 155 91% 42%;
+    /* Slightly less neon, more premium green */
+    --primary: 155 72% 38%;
     --primary-foreground: 0 0% 3.1%;
 
     --secondary: 0 0% 7.8%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 12.2%;
-    --muted-foreground: 0 0% 54.9%;
+    --muted-foreground: 0 0% 58%;
 
-    --accent: 155 79% 25%;
+    --accent: 155 65% 26%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 72% 58.4%;
@@ -34,23 +42,24 @@
     --warning: 37 95% 55%;
     --warning-foreground: 0 0% 3.1%;
 
-    --surface: 0 0% 11%;
-    --surface-hover: 0 0% 16.1%;
+    --surface: 0 0% 10%;
+    --surface-hover: 0 0% 14%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 155 79% 35%;
+    --border: 0 0% 13%;
+    --input: 0 0% 16%;
+    --ring: 155 72% 38%;
 
-    --radius: 0.75rem;
+    /* Base radius → rounded-2xl feel across components */
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 155 91% 42%;
+    --sidebar-primary: 155 72% 38%;
     --sidebar-primary-foreground: 0 0% 3.1%;
     --sidebar-accent: 0 0% 12%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 155 79% 35%;
+    --sidebar-border: 0 0% 13%;
+    --sidebar-ring: 155 72% 35%;
   }
 }
 
@@ -66,5 +75,39 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: hsl(155 72% 38% / 0.28);
+    color: hsl(0 0% 98%);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md border border-white/[0.08] bg-white/[0.03];
+  }
+
+  .glass-card {
+    @apply backdrop-blur-sm border border-white/[0.08] bg-card/70;
+  }
+
+  .section-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium
+           bg-primary/10 text-primary border border-primary/20 mb-5;
+  }
+
+  .heading-display {
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .heading-section {
+    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 }
