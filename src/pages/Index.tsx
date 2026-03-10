@@ -4,6 +4,7 @@ import Hero from "@/components/landing/Hero";
 import Features from "@/components/landing/Features";
 import Analytics from "@/components/landing/Analytics";
 import Profiles from "@/components/landing/Profiles";
+import ImportExport from "@/components/landing/ImportExport";
 import Pricing from "@/components/landing/Pricing";
 import FAQ from "@/components/landing/FAQ";
 import CTAFooter from "@/components/landing/CTAFooter";
@@ -27,6 +28,7 @@ const Index = () => {
         <Features />
         <Analytics />
         <Profiles />
+        <ImportExport />
         <Pricing />
         <FAQ />
         <CTAFooter />
