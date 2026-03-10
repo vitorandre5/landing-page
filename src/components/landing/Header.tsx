@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
+import { useSiteLanguage } from "@/lib/language";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isEn, language, setLanguage } = useSiteLanguage();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -14,10 +16,41 @@ const Header = () => {
   }, []);
 
   const links = [
-    { label: "Funcionalidades", href: "#funcionalidades" },
-    { label: "Preços", href: "#precos" },
+    { label: isEn ? "How it works" : "Como funciona", href: "#funcionalidades" },
+    { label: isEn ? "Pricing" : "Preços", href: "#precos" },
     { label: "FAQ", href: "#faq" },
   ];
+
+  const languageLabel = isEn ? "Language" : "Idioma";
+
+  const languageSelector = (
+    <div className="inline-flex items-center rounded-lg border border-border bg-background/60 p-0.5">
+      <button
+        type="button"
+        onClick={() => setLanguage("pt")}
+        className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
+          language === "pt"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+        aria-label="Mudar para portugues"
+      >
+        PT
+      </button>
+      <button
+        type="button"
+        onClick={() => setLanguage("en")}
+        className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
+          language === "en"
+            ? "bg-primary text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+        aria-label="Switch to English"
+      >
+        EN
+      </button>
+    </div>
+  );
 
   return (
     <header
@@ -48,16 +81,20 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground">{languageLabel}</span>
+            {languageSelector}
+          </div>
           <Button asChild variant="outline" size="sm" className="border-border text-foreground hover:bg-surface-hover">
-            <a href="https://app.bet-tagger.com/">Entrar</a>
+            <a href="https://app.bet-tagger.com/">{isEn ? "Sign in" : "Entrar"}</a>
           </Button>
         </div>
 
         <button
           className="md:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
+          aria-label={isEn ? "Menu" : "Menu"}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -65,6 +102,10 @@ const Header = () => {
 
       {mobileOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border px-4 pb-4">
+          <div className="flex items-center justify-between py-2">
+            <span className="text-sm text-muted-foreground">{languageLabel}</span>
+            {languageSelector}
+          </div>
           {links.map((l) => (
             <a
               key={l.href}
@@ -76,7 +117,7 @@ const Header = () => {
             </a>
           ))}
           <Button asChild variant="outline" size="sm" className="mt-2 w-full border-border">
-            <a href="https://app.bet-tagger.com/">Entrar</a>
+            <a href="https://app.bet-tagger.com/">{isEn ? "Sign in" : "Entrar"}</a>
           </Button>
         </div>
       )}

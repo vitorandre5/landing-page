@@ -2,8 +2,12 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
 import logo from "@/assets/logo.png";
+import { useSiteLanguage } from "@/lib/language";
 
-const CTAFooter = () => (
+const CTAFooter = () => {
+  const { isEn } = useSiteLanguage();
+
+  return (
   <>
     {/* CTA Final */}
     <section className="py-24 lg:py-32 relative overflow-hidden">
@@ -15,14 +19,12 @@ const CTAFooter = () => (
       <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
         <ScrollReveal>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-2xl mx-auto leading-tight">
-            Pronto para transformar apostas em{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              gestão profissional
-            </span>
-            ?
+            {isEn ? "Start organizing your betting operation now." : "Comece agora a organizar sua operação de apostas."}
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-lg mx-auto">
-            Junte-se a centenas de apostadores que já organizam e lucram mais com o Bet Tagger.
+            {isEn
+              ? "Choose the ideal plan for your routine and get more clarity, more control, and less manual work when logging your bets."
+              : "Escolha o plano ideal para sua rotina e tenha mais clareza, mais controle e menos trabalho manual no registro das suas apostas."}
           </p>
           <Button
             asChild
@@ -30,7 +32,7 @@ const CTAFooter = () => (
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-10 py-6 text-base shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 hover:scale-[1.03]"
           >
             <a href="https://app.bet-tagger.com/register">
-              Criar conta grátis agora
+              {isEn ? "Start free" : "Começar grátis"}
               <ArrowRight className="ml-2" size={20} />
             </a>
           </Button>
@@ -51,22 +53,23 @@ const CTAFooter = () => (
           </span>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#funcionalidades" className="hover:text-foreground transition-colors">
-              Funcionalidades
+              {isEn ? "How it works" : "Como funciona"}
             </a>
             <a href="#precos" className="hover:text-foreground transition-colors">
-              Preços
+              {isEn ? "Pricing" : "Preços"}
             </a>
             <a href="#faq" className="hover:text-foreground transition-colors">
               FAQ
             </a>
           </div>
           <p className="text-xs text-muted-foreground">
-            © 2026 Bet Tagger. Todos os direitos reservados.
+            {isEn ? "© 2026 Bet Tagger. All rights reserved." : "© 2026 Bet Tagger. Todos os direitos reservados."}
           </p>
         </div>
       </div>
     </footer>
   </>
-);
+  );
+};
 
 export default CTAFooter;

@@ -1,39 +1,54 @@
-import { Bot, Wallet, Users, History } from "lucide-react";
+import { Bot, Clock3, FileSpreadsheet, LineChart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import ScrollReveal from "./ScrollReveal";
+import { useSiteLanguage } from "@/lib/language";
 
-const features = [
-  {
-    icon: Bot,
-    title: "AI Auto",
-    description: "IA que identifica os prints das apostas e planilha tudo automaticamente, com precisão e velocidade.",
-  },
-  {
-    icon: Wallet,
-    title: "Gestão de Banca",
-    description: "Acompanhe sua banca em tempo real com alertas, metas e histórico de evolução.",
-  },
-  {
-    icon: Users,
-    title: "Tipsters e Metas",
-    description: "Gerencie apostas de tipsters, divida lucros automaticamente e defina metas por período.",
-  },
-  {
-    icon: History,
-    title: "Histórico Completo",
-    description: "Consulte todas as suas apostas com filtros avançados, tags e exportação de dados.",
-  },
-];
+const Features = () => {
+  const { isEn } = useSiteLanguage();
 
-const Features = () => (
+  const features = [
+    {
+      icon: FileSpreadsheet,
+      title: isEn ? "Without history, there is no improvement" : "Sem histórico, você não melhora",
+      description: isEn
+        ? "Many people bet every day, but rarely track their operation accurately. Without data, every perception becomes guesswork."
+        : "Muita gente aposta todos os dias, mas não acompanha a operação com precisão. Sem dados, qualquer percepção vira achismo.",
+    },
+    {
+      icon: Clock3,
+      title: isEn ? "Manual tracking breaks consistency" : "O manual quebra a consistência",
+      description: isEn
+        ? "Writing down each bet takes time. After a few days, control drops, records get lost, and you are back to operating without clarity."
+        : "Anotar aposta por aposta toma tempo. Depois de alguns dias, o controle para, os registros se perdem e você volta a operar sem clareza.",
+    },
+    {
+      icon: Bot,
+      title: isEn ? "Send the screenshot. AI logs it for you." : "Envie o print. A IA registra para você.",
+      description: isEn
+        ? "With Bet Tagger AI Auto, screenshots become automatic records inside the platform. Less friction, more speed, and more consistency."
+        : "Com o AI Auto do Bet Tagger, os prints viram registros automáticos na plataforma. Menos atrito, mais velocidade e mais constância.",
+    },
+    {
+      icon: LineChart,
+      title: isEn ? "More control in your routine" : "Mais controle no dia a dia",
+      description: isEn
+        ? "Track profit, loss, and performance with complete history, without depending on memory, loose notes, or forgotten spreadsheets."
+        : "Acompanhe lucro, prejuízo e desempenho com histórico completo, sem depender de memória, anotações soltas ou planilhas esquecidas.",
+    },
+  ];
+
+  return (
   <section id="funcionalidades" className="py-20 lg:py-28">
     <div className="container mx-auto px-4 lg:px-8">
       <ScrollReveal>
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Tudo que você precisa em um só lugar
+            {isEn ? "Who does not track their numbers is betting in the dark." : "Quem não acompanha os próprios números aposta no escuro."}
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            Uma IA que identifica os prints das apostas e transforma em planilha automática para você focar no lucro.
+          <p className="text-muted-foreground max-w-3xl mx-auto">
+            {isEn
+              ? "Bet Tagger was built to solve exactly this: organize, log, and track your betting operation with more clarity and less manual work."
+              : "O Bet Tagger foi criado para resolver exatamente isso: organizar, registrar e acompanhar sua operação com mais clareza e menos trabalho manual."}
           </p>
         </div>
       </ScrollReveal>
@@ -51,8 +66,25 @@ const Features = () => (
           </ScrollReveal>
         ))}
       </div>
+
+      <ScrollReveal delay={250}>
+        <div className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <p className="text-xl font-semibold mb-2">{isEn ? "Send the bet screenshot. AI logs it for you." : "Envie o print da aposta. A IA registra para você."}</p>
+            <p className="text-sm text-muted-foreground max-w-2xl">
+              {isEn
+                ? "Instead of filling everything manually, use AI Auto to transform screenshots into automatic records and keep your routine organized even when betting frequently."
+                : "Em vez de preencher tudo manualmente, use o AI Auto para transformar prints em registros automáticos dentro da plataforma e manter sua rotina organizada mesmo apostando com frequência."}
+            </p>
+          </div>
+          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shrink-0">
+            <a href="https://app.bet-tagger.com/">{isEn ? "Try for free" : "Testar grátis"}</a>
+          </Button>
+        </div>
+      </ScrollReveal>
     </div>
   </section>
-);
+  );
+};
 
 export default Features;
