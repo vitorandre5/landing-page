@@ -13,6 +13,20 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+      },
+      letterSpacing: {
+        heading: "-0.03em",
+        "heading-sm": "-0.025em",
+      },
+      boxShadow: {
+        "glow-sm": "0 0 30px -5px hsl(155 72% 38% / 0.2)",
+        "glow-md": "0 0 50px -10px hsl(155 72% 38% / 0.25)",
+        "glow-lg": "0 0 80px -15px hsl(155 72% 38% / 0.3)",
+        "card": "0 1px 3px rgba(0,0,0,0.4), 0 4px 20px rgba(0,0,0,0.3)",
+        "hero": "0 40px 120px -20px rgba(0,0,0,0.9), 0 0 80px -20px hsl(155 72% 38% / 0.1)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
