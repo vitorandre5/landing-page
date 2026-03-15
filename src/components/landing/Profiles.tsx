@@ -47,7 +47,7 @@ const Profiles = () => {
   ];
 
   return (
-  <section className="py-20 lg:py-28">
+  <section id="operacao-organizada" className="py-20 lg:py-28">
     <div className="container mx-auto px-4 lg:px-8">
       <ScrollReveal>
         <div className="text-center mb-14">

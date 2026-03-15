@@ -124,11 +124,14 @@ const Hero = () => {
               </a>
             </Button>
             <Button
+              asChild
               variant="outline"
               size="lg"
               className="border-border text-foreground rounded-xl hover:bg-surface-hover hover:border-primary/30 transition-all duration-300"
             >
-              {isEn ? "See how AI Auto works" : "Ver como funciona o AI Auto"}
+              <a href="#operacao-organizada">
+                {isEn ? "See how AI Auto works" : "Ver como funciona o AI Auto"}
+              </a>
             </Button>
           </div>
 
